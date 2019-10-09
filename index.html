@@ -69,17 +69,9 @@
     if (level != null) { document.getElementById("level").setAttribute("value", level); }
 
     const go = new Go();
-    let mod, inst;
-    WebAssembly.instantiateStreaming(
-      fetch("main.wasm"), go.importObject).then((result) => {
-      mod = result.module;
-      inst = result.instance;
-      run();
+    WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+      go.run(result.instance);
     });
-
-    async function run() {
-      await go.run(inst);
-    }
   </script>
 </body>
 </html>

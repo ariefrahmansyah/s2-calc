@@ -1,13 +1,11 @@
-all: build-wasm run
-
-init-deps:
-	@dep init -v
+all: get-deps build-wasm run
 
 get-deps:
-	@dep ensure -v
+	@GO111MODULE=on go mod tidy -v
+	@GO111MODULE=on go mod vendor -v
 
 build-wasm:
-	@GOOS=js GOARCH=wasm go build -o main.wasm
+	@GO111MODULE=on GOOS=js GOARCH=wasm go build -o main.wasm
 
 run:
 	@goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'

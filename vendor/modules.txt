@@ -1,0 +1,6 @@
+# github.com/golang/geo v0.0.0-20190916061304-5b978397cfec
+github.com/golang/geo/s2
+github.com/golang/geo/r1
+github.com/golang/geo/r2
+github.com/golang/geo/r3
+github.com/golang/geo/s1
